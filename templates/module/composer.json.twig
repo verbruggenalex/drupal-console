@@ -42,10 +42,11 @@
 {% if support_items is defined and support_items is not empty %}
     "support": {
 {% for support in support_items %}
-        "{{ support.channel }}": "{{ support.url }}",
+        "{{ support.channel }}": "{{ support.url }}"{% if not loop.last %},{% endif %}
+
 {% endfor %}
-    },
-{% endif %}
+    }{% endif %}{% if required_items is defined and required_items is not empty %},{% endif %}
+
 {% if required_items is defined and required_items is not empty %}
     "require": {
 {% for required_item in required_items %}
